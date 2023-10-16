@@ -1,4 +1,5 @@
 #include "Window.hpp"
+#include "KeyListener.hpp"
 
 #include <iostream>
 
@@ -35,6 +36,9 @@ void Window::init()
   if (!glfwWindow) {
     std::cerr << "Error: GLFW window couldn't be created.\n";
   }
+
+  // Tell the glfw how to handle the keyboard input.
+  glfwSetKeyCallback(this->glfwWindow, KeyListener::key_callback);
 }
 
 void Window::run()
@@ -42,6 +46,19 @@ void Window::run()
   while(!glfwWindowShouldClose(this->glfwWindow)) {
     // Running...
 
+    if (KeyListener::isKeyPressed(GLFW_KEY_A)) {
+      std::cout << "Holding 'A' key...\n";
+    }
+
+    if (KeyListener::isKeyDown(GLFW_KEY_S)) {
+      std::cout << "Pressing 'S' key...\n";
+    }
+
+    if (KeyListener::isKeyUp(GLFW_KEY_D)) {
+      std::cout << "Released 'D' key...\n";
+    }
+
+    KeyListener::update();
     glfwPollEvents();
   }
   this->cleanup();
