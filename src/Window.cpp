@@ -1,7 +1,9 @@
 #include "Window.hpp"
 #include "KeyListener.hpp"
+#include "Utils.hpp"
 
 #include <iostream>
+#include <string>
 
 Window::Window()
 {
@@ -43,20 +45,12 @@ void Window::init()
 
 void Window::run()
 {
+  std::string fileCont = Utils::readFile("assets/file.txt");
+  std::cout << fileCont << std::endl;
+
   while(!glfwWindowShouldClose(this->glfwWindow)) {
     // Running...
 
-    if (KeyListener::isKeyPressed(GLFW_KEY_A)) {
-      std::cout << "Holding 'A' key...\n";
-    }
-
-    if (KeyListener::isKeyDown(GLFW_KEY_S)) {
-      std::cout << "Pressing 'S' key...\n";
-    }
-
-    if (KeyListener::isKeyUp(GLFW_KEY_D)) {
-      std::cout << "Released 'D' key...\n";
-    }
 
     KeyListener::update();
     glfwPollEvents();

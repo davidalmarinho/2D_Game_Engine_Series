@@ -18,5 +18,5 @@ namespace KeyListener
   bool isKeyUp(int keycode);
 
   // Homework
-  bool isKeybindDown(int keycode, int mod);
+  bool isKeyBindDown(int modKey, int keyCode);
 }

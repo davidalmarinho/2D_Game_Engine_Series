@@ -52,4 +52,9 @@ namespace KeyListener
 
     return false;
   }
+
+  bool isKeyBindDown(int modKey, int keyCode)
+  {
+    return isKeyPressed(modKey) && isKeyDown(keyCode);
+  }
 }
